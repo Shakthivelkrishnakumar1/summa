@@ -1,0 +1,8 @@
+<div id="page">
+  <header [ngStyle]="{'display': this.test['1'] ? 'block' : 'none' }">Header</header>
+  <nav [ngStyle]="{'display': this.test['2'] ? 'block' : 'none' }">Navigation</nav>
+  <main [ngStyle]="{'display': this.test['3'] ? 'block' : 'none' }">Main area</main>
+  <footer [ngStyle]="{'display': this.test['4'] ? 'block' : 'none' }">Footer</footer>
+</div>
+<button (click)="expandHeader(['2','3','4'])">Expand Header</button>
+<button (click)="revert(['2','3','4'])">Revert back</button>

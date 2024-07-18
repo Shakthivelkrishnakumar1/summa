@@ -1,0 +1,25 @@
+<div id="pages">
+  <ag-grid-angular
+    *ngIf="tests['1']"
+    id="userTable"
+    class="ag-theme-alpine"
+    [rowData]="userData"
+    [columnDefs]="userColumnDefs"
+    [defaultColDef]="defaultColDef"
+    style="width: 100%; height: 200px;">
+  </ag-grid-angular>
+  
+  <ag-grid-angular
+    *ngIf="tests['2']"
+    id="companyTable"
+    class="ag-theme-alpine"
+    [rowData]="companyData"
+    [columnDefs]="companyColumnDefs"
+    [defaultColDef]="defaultColDef"
+    style="width: 100%; height: 200px;">
+  </ag-grid-angular>
+</div>
+<button (click)="expandHeaders()" [ngClass]="isExpanded ? 'left-arrow' : 'right-arrow'">
+  <i [ngClass]="isExpanded ? 'fas fa-arrow-left' : 'fas fa-arrow-right'"></i>
+</button>
+

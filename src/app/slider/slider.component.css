@@ -1,0 +1,28 @@
+#pages {
+  display: grid;
+  width: 100%;
+  height: 200px;
+  grid-template-areas: "head nav";
+  grid-gap: 30px;
+}
+
+#pages > ag-grid-angular {
+  background-color: #8ca0ff;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.right-arrow {
+  left: 10px;
+}
+
+.left-arrow {
+  right: 10px;
+}
