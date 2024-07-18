@@ -19,10 +19,10 @@ button {
   cursor: pointer;
 }
 
-.right-arrow {
+.left-arrow {
   left: 10px;
 }
 
-.left-arrow {
+.right-arrow {
   right: 10px;
 }

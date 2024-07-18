@@ -31,7 +31,10 @@ export class SliderComponent implements OnInit {
     filter: true,
     resizable: true,
   };
-  isExpanded = false;
+  isExpandedLeft = false;
+  isExpandedRight = true;
+  isLeftArrowVisible = true;
+  isRightArrowVisible = true;
 
   constructor(private http: HttpClient) {}
 
@@ -60,27 +63,49 @@ export class SliderComponent implements OnInit {
       });
   }
 
-  expandHeaders() {
+  expandHeaders(side: 'left' | 'right') {
+    console.log(this.isExpandedLeft,this.isExpandedRight,this.isLeftArrowVisible,this.isRightArrowVisible)
     const pageElement = document.getElementById('pages');
     if (pageElement) {
-      if (this.isExpanded) {
-        pageElement.style.gridTemplateAreas = '"head nav"';
-        this.tests['1'] = true;
-        this.tests['2'] = true;
-      } else {
-        pageElement.style.gridTemplateAreas = '"head"';
-        this.tests['2'] = false;
+      if (side === 'left') {
+        if (this.isExpandedLeft) {
+          pageElement.style.gridTemplateAreas = '"head nav"';
+          this.tests['1'] = true;
+          this.tests['2'] = true;
+          this.isLeftArrowVisible = true;
+          this.isRightArrowVisible = true;
+        } else {
+          pageElement.style.gridTemplateAreas = '"head"';
+          this.tests['2'] = false;
+          this.isLeftArrowVisible = false;
+          this.isRightArrowVisible = true;
+        }
+        this.isExpandedLeft = !this.isExpandedLeft;
+      } else if (side === 'right') {
+        if (this.isExpandedRight) {
+          pageElement.style.gridTemplateAreas = '"head nav"';
+          this.tests['1'] = true;
+          this.tests['2'] = true;
+          this.isLeftArrowVisible = true;
+          this.isRightArrowVisible = true;
+        } else {
+          pageElement.style.gridTemplateAreas = '"nav"';
+          this.tests['1'] = false;
+          this.isLeftArrowVisible = true;
+          this.isRightArrowVisible = false;
+        }
+        this.isExpandedRight = !this.isExpandedRight;
       }
-      this.isExpanded = !this.isExpanded;
     }
   }
 
   getPageStyles() {
-    if (this.isExpanded) {
+    if (this.isExpandedLeft) {
       return {
-        'grid-template-areas': '"head head"'
+        'grid-template-areas': '"head"'
       };
-    } else {
+    } 
+    else {
       return {
         'grid-template-areas': '"head nav"'
       };
